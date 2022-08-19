@@ -12,3 +12,7 @@ const server = app.listen(app.get('port'), () => {
     }
     console.log('[Server] Listening in => %s:%s', S_Host, S_Port)
 });
+
+server.on('error', error => {
+    console.log(`[ERRO] Erro ao iniciar o servidor.\n\n${error.code}`)
+})
