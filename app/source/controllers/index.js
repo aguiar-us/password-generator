@@ -1,3 +1,3 @@
 exports.getMethodController = async (request, response) => {
-    response.send("Hello World")
+    response.render("index")
 };

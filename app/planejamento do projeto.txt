@@ -1,0 +1,38 @@
+index:
+    - seguintes opções no front end: 
+        - incluir caracteres especiais
+        - incluir caracteres comuns (a-z)
+        - incluir caracteres numéricos (0-9)
+        - tamanho da senha, exemplo: 12 caracteres
+
+web socket:
+
+    - front end:
+        *envia requisição WS
+        *recebe requisição WS
+
+        - requisição envio:
+            - descrição: "irá enviar para o backend um roteiro de como montar a senha"
+            - buscar os elementos do objeto no frontend através de IDS
+            - objeto com o seguintes elementos:
+                - caracteres especiais: true/false (boolean)
+                - caracteres comuns: true/false (boolean)
+                - caracteres numericos: true/false (boolean)
+                - tamanho da senha: numerico (min: 6, max: 60, default: 8)
+
+        - requisição recebimento:
+            - descrição: "irá receber do backend a senha ou uma mensagem de erro"
+            - notificação em cima no canto superior direito "senha gerada com sucesso"
+            - botão notificação verde de sucesso em cima da div
+            - inserir senha recebida na div de senha
+            - adicionar botão de gerar nova senha na div de senha
+            - adicionar botão de copiar senha na div de senha
+
+    - back end:
+        *envia requisição WS
+        *recebe requisição WS
+
+        - requisição envio:
+            - valida se todos os elementos foram recebidos
+            - valida se os elementos recebidos são válidos e estão nos padrões pré estabelecidos
+            
