@@ -44,5 +44,4 @@ web socket:
 
         - requisição envio:
             *descrição: "enviar a senha gerada para o frontend"
-            - armazena a senha gerada durante o recebimento da requisição em uma variável
-            - envia uma requisição websocket para o frontend com a variável da senha gerada
+            - envia uma requisição websocket para o frontend com a senha gerada
