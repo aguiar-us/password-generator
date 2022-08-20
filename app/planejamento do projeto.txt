@@ -12,8 +12,9 @@ web socket:
         *recebe requisição WS
 
         - requisição envio:
-            - descrição: "irá enviar para o backend um roteiro de como montar a senha"
-            - buscar os elementos do objeto no frontend através de IDS
+            *descrição: "irá enviar para o backend um roteiro de como montar a senha"
+            
+            - buscar os elementos do objeto no frontend através de IDS, exemplo: document.getElementById() e <div id="">
             - objeto com o seguintes elementos:
                 - caracteres especiais: true/false (boolean)
                 - caracteres comuns: true/false (boolean)
@@ -21,7 +22,8 @@ web socket:
                 - tamanho da senha: numerico (min: 6, max: 60, default: 8)
 
         - requisição recebimento:
-            - descrição: "irá receber do backend a senha ou uma mensagem de erro"
+            *descrição: "irá receber do backend a senha ou uma mensagem de erro"
+            
             - notificação em cima no canto superior direito "senha gerada com sucesso"
             - botão notificação verde de sucesso em cima da div
             - inserir senha recebida na div de senha
@@ -32,7 +34,15 @@ web socket:
         *envia requisição WS
         *recebe requisição WS
 
-        - requisição envio:
+        - requisição recebimento:
+            *descrição: "irá validar os elementos para criar uma senha e enviar para o frontend"
+            - valida se o elemento recebido é um objeto
             - valida se todos os elementos foram recebidos
             - valida se os elementos recebidos são válidos e estão nos padrões pré estabelecidos
-            
+            - cria uma senha utilizando os elementos recebidos
+            - *envia requisição para o frontend contendo a senha gerada
+
+        - requisição envio:
+            *descrição: "enviar a senha gerada para o frontend"
+            - armazena a senha gerada durante o recebimento da requisição em uma variável
+            - envia uma requisição websocket para o frontend com a variável da senha gerada
