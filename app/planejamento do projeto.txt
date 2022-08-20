@@ -16,9 +16,10 @@ web socket:
             
             - buscar os elementos do objeto no frontend através de IDS, exemplo: document.getElementById() e <div id="">
             - objeto com o seguintes elementos:
-                - caracteres especiais: true/false (boolean)
-                - caracteres comuns: true/false (boolean)
-                - caracteres numericos: true/false (boolean)
+                - Lowercase: true/false (boolean)
+                - Uppercase: true/false (boolean)
+                - Numbers: true/false (boolean)
+                - Symbols: true/false (boolean)
                 - tamanho da senha: numerico (min: 6, max: 60, default: 8)
 
         - requisição recebimento:
