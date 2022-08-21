@@ -401,7 +401,7 @@ var Lobibox = Lobibox || {};
         success: {
             'class': 'lobibox-notify-success',
             'title': 'Success',
-            sound: 'sound2'
+            sound: false
         },
         error: {
             'class': 'lobibox-notify-error',

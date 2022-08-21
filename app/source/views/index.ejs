@@ -8,8 +8,7 @@
 	<!--favicon-->
 	<link rel="icon" href="/assets/images/favicon-32x32.png" type="image/png" />
 	<!-- loader-->
-	<link href="/assets/css/pace.min.css" rel="stylesheet" />
-	<script src="/assets/js/pace.min.js"></script>
+	<link rel="stylesheet" href="/assets/plugins/notifications/css/lobibox.min.css" />
 	<!-- Bootstrap CSS -->
 	<link href="/assets/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -25,8 +24,18 @@
 			<div class="container">
 				<div class="row row-cols-1 row-cols-lg-2 row-cols-xl-2">
 					<div class="col mx-auto">
-						<div class="my-4 text-center">
-							<img src="/assets/images/logo-img.png" width="180" alt="" />
+						<div class="my-4" id="divAlerts">
+							<div class="alert border-0 border-start border-5 border-white alert-dismissible fade show py-2">
+								<div class="d-flex align-items-center">
+									<div class="font-35 text-white"><i class='bx bx-bookmark-heart'></i>
+									</div>
+									<div class="ms-3">
+										<h6 class="mb-0 text-white">Welcome! </h6>
+										<div>Generate passwords quickly, conveniently and securely with just 1 click.</div>
+									</div>
+								</div>
+								<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+							</div>
 						</div>
 						<div class="card">
 							<div class="card-body">
@@ -37,40 +46,37 @@
 										</p>
 									</div>
 									<div class="d-grid">
-										<a class="btn my-4 shadow-sm btn-light" href="javascript:;"> <span
-												class="d-flex justify-content-center align-items-center">
-												<img class="me-2" src="/assets/images/icons/search.svg" width="16"
-													alt="Image Description">
-												<span>Sign Up with Google</span>
-											</span>
-										</a>
+										<div class="input-group mb-3">
+											<input id="finalPassword" type="text" class="form-control" placeholder="Click generate password" aria-label="Click generate password" aria-describedby="button-addon2">
+											<button class="btn btn-light" type="button" id="button-addon2" onclick="copyFunction()">COPY</button>
+										</div>
 									</div>
 									<div class="login-separater text-center mb-4"> <span>GENERATE A SECURE PASSWORD</span>
 										<hr />
 									</div>
 									<div class="form-body">
-										<form class="row g-3">
+										<form class="row g-3" id="passwordForm">
 											<div class="col-sm-6">
 												<div class="form-check form-switch">
-													<input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
+													<input class="form-check-input" type="checkbox" id="inputLowercase">
 													<label class="form-check-label" for="flexSwitchCheckChecked">Lowercase</label>
 												</div>
 											</div>
 											<div class="col-sm-6">
 												<div class="form-check form-switch">
-													<input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
+													<input class="form-check-input" type="checkbox" id="inputUppercase">
 													<label class="form-check-label" for="flexSwitchCheckChecked">Uppercase</label>
 												</div>
 											</div>
 											<div class="col-sm-6">
 												<div class="form-check form-switch">
-													<input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
+													<input class="form-check-input" type="checkbox" id="inputNumbers">
 													<label class="form-check-label" for="flexSwitchCheckChecked">Numbers</label>
 												</div>
 											</div>
 											<div class="col-sm-6">
 												<div class="form-check form-switch">
-													<input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
+													<input class="form-check-input" type="checkbox" id="inputSymbols">
 													<label class="form-check-label" for="flexSwitchCheckChecked">Symbols</label>
 												</div>
 											</div>
@@ -106,7 +112,16 @@
 		</div>
 	</div>
 
+	<script src="/assets/js/bootstrap.bundle.min.js"></script>
+	<!--plugins-->
 	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/plugins/simplebar/js/simplebar.min.js"></script>
+	<script src="/assets/plugins/metismenu/js/metisMenu.min.js"></script>
+	<!--notification js -->
+	<script src="/assets/plugins/notifications/js/lobibox.min.js"></script>
+	<script src="/assets/plugins/notifications/js/notifications.min.js"></script>
+	<script src="/assets/plugins/notifications/js/notification-custom-script.js"></script>
+	<!--app JS-->
 	<%- include('@/partials/html/websocket.ejs') %>
 	<%- include('@/partials/html/footer.ejs') %>
 </body>

@@ -1,5 +1,78 @@
 <script src="/socket.io/socket.io.js"></script>
 
 <script>
-  var socket = io();
+    var socket = io();
+
+    const inputLowercase = document.getElementById('inputLowercase');
+    const inputUppercase = document.getElementById('inputUppercase');
+    const inputNumbers = document.getElementById('inputNumbers');
+    const inputSymbols = document.getElementById('inputSymbols');
+    const inputLength = document.getElementById('customRange');
+    const inputPassword = document.getElementById('finalPassword');
+    const divAlerts = document.getElementById('divAlerts');
+
+    const form = document.getElementById('passwordForm');
+
+    function copyFunction() {
+        var copyText = inputPassword;
+
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+
+        navigator.clipboard.writeText(copyText.value);
+
+        round_success_copy_noti();
+    }
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (inputLowercase && inputUppercase && inputNumbers && inputSymbols) {
+
+            var inputsCheck = {
+                lowercase: inputLowercase.checked,
+                uppercase: inputUppercase.checked,
+                numbers: inputNumbers.checked,
+                symbols: inputSymbols.checked,
+                length: parseInt(inputLength.value)
+            }
+
+            socket.emit('password:request', inputsCheck)
+        }
+    });
+
+    socket.on('password:receive', password => {
+        inputPassword.value = password;
+        round_success_noti();
+        divAlerts.innerHTML = `
+                            <div class="alert border-0 border-start border-5 border-white alert-dismissible fade show py-2">
+								<div class="d-flex align-items-center">
+									<div class="font-35 text-white"><i class='bx bx-bookmark-heart'></i>
+									</div>
+									<div class="ms-3">
+										<h6 class="mb-0 text-white">Password generated successfully! </h6>
+										<div>Your password has been generated. Click "COPY" to copy the password to your clipboard.</div>
+									</div>
+								</div>
+								<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+							</div>
+        `
+    });
+
+    socket.on('password:receive:error', object => {
+        round_error_noti();
+        divAlerts.innerHTML = `
+                            <div class="alert border-0 border-start border-5 border-danger alert-dismissible fade show py-2">
+								<div class="d-flex align-items-center">
+									<div class="font-35 text-danger"><i class='bx bxs-message-square-x'></i>
+									</div>
+									<div class="ms-3">
+										<h6 class="mb-0 text-white">${object.title}</h6>
+										<div>${object.title}</div>
+									</div>
+								</div>
+								<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+							</div>
+        `
+
+    });
 </script>
