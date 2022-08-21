@@ -1,18 +1,17 @@
 const { app } = require('./app');
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require('socket.io');
+const io = new Server(server) 
 
 // const applicationPort = 8000;
 
 app.set('port', (typeof applicationPort != "undefined" ? applicationPort : 80));
 
-const server = app.listen(app.get('port'), () => {
-    var S_Host = (server.address().address || '127.0.0.1');
-    var S_Port = server.address().port;
-    if (S_Host === '::') {
-        S_Host = "http://localhost"
-    }
-    console.log('[Server] Listening in => %s:%s', S_Host, S_Port)
+io.on('connection', socket => {
+    console.log('usuário conectado')
 });
 
-server.on('error', error => {
-    console.log(`[ERRO] Erro ao iniciar o servidor.\n\n${error.code}`)
+server.listen(app.get('port'), () => {
+    console.log('SERVER LISTENING IN ' + app.get('port'));
 })
