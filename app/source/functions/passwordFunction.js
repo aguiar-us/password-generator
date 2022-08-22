@@ -40,8 +40,6 @@ const passwordFunction = async (object) => {
         }; 
     };
     
-    
-
     return await passwordGenerator(object);
 }
 
