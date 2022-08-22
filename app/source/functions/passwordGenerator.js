@@ -1,7 +1,7 @@
 const passwordGenerator = async (object) => {
     var PASSWORD_NUMBERS = "0123456789"
     var PASSWORD_ALPHABET = "abcdefghijklmnopqrstuvwxyz"
-    var PASSWORD_ALPHABET_UPPERCASE = alfachars.toUpperCase();
+    var PASSWORD_ALPHABET_UPPERCASE = PASSWORD_ALPHABET.toUpperCase();
     var PASSWORD_SYMBOLS = "!@#$%^&*()"
     var PASSWORD_LENGTH = object.length;
     var PASSWORD = "";
