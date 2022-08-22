@@ -3,6 +3,8 @@ This project is a fast, practical and free password generator.
 
 In addition to being a fully customizable project, with open source, it is fully mobile responsive.
 
+DEMO: https://www.youtube.com/watch?v=XVvI7SM0VcA
+
 <center>
     <img src=".github/images/1.png">
 </center>
