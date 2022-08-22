@@ -25,9 +25,8 @@ io.on('connection', socket => {
                 break;
             case true:
                 socket.emit('password:receive', password.content)
-        }
+        };
 
-        
     })
 });
 
